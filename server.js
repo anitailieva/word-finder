@@ -22,7 +22,12 @@ app.get('/', (req, res) => {
 });
 
 
-
+app.post('/search', function (req, res) {
+  res.render('result', {
+    words: search(req.body.pattern, dictionary).result,
+    pattern: req.body.pattern
+  });
+});
 
 app.listen(process.env.PORT || 3000);
 
